@@ -251,6 +251,9 @@ class VersionedExtraWhere(ExtraWhere):
         sql = ""
         params = []
 
+        if not self._joined_alias:
+            self._joined_alias = self.alias
+
         # Set the SQL string in dependency of whether as_of_time was set or not
         if self._as_of_time_set:
             if self.as_of_time:
